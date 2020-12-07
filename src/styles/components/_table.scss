@@ -1,0 +1,99 @@
+.table {
+  width: 100%;
+  font-size: $fs-12;
+
+  ul {
+    + ul {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: none;
+    }
+  }
+
+  .table-header,
+  .table-content {
+    @include flexbox();
+    @include flex-align-items(center);
+
+    li {
+      padding-top: 4px;
+
+      + li {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &.col-2 {
+    .table-header,
+    .table-content {
+      li {
+        width: 50%;
+      }
+    }
+  }
+
+  &.col-3 {
+    .table-header,
+    .table-content {
+      li {
+        width: calc(50% / 2);
+      }
+    }
+  }
+
+  &.col-4 {
+    .table-header,
+    .table-content {
+      li {
+        width: calc(50% / 3);
+      }
+    }
+  }
+
+  &.col-5 {
+    .table-header,
+    .table-content {
+      li {
+        width: calc(50% / 4);
+      }
+    }
+  }
+
+  &.col-9 {
+    .table-header,
+    .table-content {
+      li {
+        width: calc(50% / 8);
+      }
+    }
+  }
+
+  .table-header {
+    color: $color-gray;
+    font-weight: 400;
+  }
+
+  .table-content {
+    cursor: pointer;
+    padding: 1px 0;
+    @include transition (all 0.2s ease-in-out);
+
+    &:hover {
+      background-color: $color-green;
+      @include transition (all 0.2s ease-in-out);
+    }
+
+    li {
+      + li {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .table-list {
+    > li {
+      width: 100%;
+    }
+  }
+}

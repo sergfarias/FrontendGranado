@@ -1,0 +1,22 @@
+.budget-search {
+  width: 600px;
+
+  mat-header-cell,
+  mat-cell,
+  mat-footer-cell {
+    width: calc(50% / 3);
+
+    &:nth-child(1) {
+      width: 10%;
+    }
+    &:nth-child(3) {
+      width: 40%;
+    }
+
+    + mat-header-cell,
+    + mat-cell,
+    + mat-footer-cell {
+      margin-left: 10px;
+    }
+  }
+}

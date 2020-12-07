@@ -1,0 +1,32 @@
+<div class="scroll-grid" #grid tabindex="0" (focus)="grid_onFocus()" (blur)="grid_onBlur()">
+  <div class="scrollbar" tabindex="0" (focus)="grid_onFocus()" (blur)="grid_onBlur()">
+
+    <elastic-scrollbar
+      class="scrollbar-container"
+      name="{{gridId}}-scroller"
+      tabindex="0" (focus)="grid_onFocus()" (blur)="grid_onBlur()"
+    >
+      <mat-table #table [dataSource]="dataSource" tabindex="0" 
+      (focus)="grid_onFocus()" (blur)="grid_onBlur()">
+        <mat-header-row *cdkHeaderRowDef="displayedColumnNames"></mat-header-row>
+
+        <mat-row
+          mat-row
+          *matRowDef="let row; columns: displayedColumnNames; let i = index"
+          [ngClass]="{ highlight: selectedRowIndex == i }"
+          (click)="highlight(row, i)"
+          tabindex="0"
+          (focus)="grid_onFocus()" (blur)="grid_onBlur()"
+          #produto
+          (click)="selectItem(row)"
+        ></mat-row>
+
+        <ng-container [cdkColumnDef]="col.MemberName" *ngFor="let col of displayedColumnsInternal">
+          <mat-header-cell *cdkHeaderCellDef [ngStyle]="{'flex': col.Width ? col.Width : 'auto'}">{{ col.DisplayName }}</mat-header-cell>
+          <mat-cell *cdkCellDef="let row" [ngStyle]="{'flex': col.Width ? col.Width : 'auto'}"> {{ col.getValue(row) }} </mat-cell>
+        </ng-container>
+
+      </mat-table>
+    </elastic-scrollbar>
+  </div>
+</div>

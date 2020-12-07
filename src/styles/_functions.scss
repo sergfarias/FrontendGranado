@@ -1,0 +1,3 @@
+@function image-default($filename){
+  @return url(/assets/img/#{$filename});
+}

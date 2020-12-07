@@ -1,0 +1,18 @@
+<mat-form-field>
+    <mat-label>{{ label }}</mat-label>
+    <mat-select
+        #selectInterno
+        (keydown.enter)="enterKey($event)"
+        (openedChange)="openChanged($event)"
+        [placeholder]="label"
+        [formControl]="campoInterno"
+        [errorStateMatcher]="errorState"
+        (blur)="onTouched()">
+        <mat-option [value]="null" *ngIf="!removerSelecione">Selecione</mat-option>
+        <mat-option *ngFor="let item of lista" (keydown)="$event.stopPropagation()"
+            [value]="item[itemValue]"> {{ item[itemDisplay] }}
+        </mat-option>
+    </mat-select>
+    <mat-hint *ngIf="!!dica">{{ dica }}</mat-hint>
+    <mat-error *ngIf="exibirErro()">{{ recuperarMensagem() }}</mat-error>
+</mat-form-field>

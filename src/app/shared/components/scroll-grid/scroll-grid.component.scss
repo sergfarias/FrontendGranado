@@ -1,0 +1,20 @@
+.table-container {
+    height: 400px;
+}
+
+.highlight{
+    background-color: #b7d74c !important;
+  }
+
+  mat-row:focus{
+        outline: none;
+    }
+
+    mat-row:hover {
+        cursor: pointer;
+        background-color: #ebffa8;
+    }
+
+.scrollbar {
+    height: 230px;
+}

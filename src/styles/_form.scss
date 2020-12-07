@@ -1,0 +1,161 @@
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.fm-group {
+  width: 100%;
+  position: relative;
+}
+
+.fm-inline {
+  @include flexbox();
+
+  .fm-group {
+    width: 100%;
+    margin-right: $spacing-sm;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &.block {
+    display: block;
+
+    .fm-group {
+      margin-right: 0;
+    }
+  }
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+
+/*
+.mat-form-field-appearance-legacy .mat-form-field-underline {bottom: 0;}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {padding: 0;}
+*/
+
+/* input */
+
+.mat-form-field-infix {
+  width: auto !important;
+  zoom: .8;
+  border-top: none;
+}
+
+.mat-form-field-prefix {
+  font-size: $fs-12;
+  margin-right: 5px;
+}
+
+.fm-search {
+  width: 100%;
+  @include flexbox();
+  @include flex-align-items(center);
+
+  .fm-group {
+    margin: 0;
+  }
+
+  button {
+    width: auto;
+    height: auto;
+    line-height: normal;
+    margin: 0 15px 15px 0;
+
+    .mat-icon {
+      font-size: $fs-18;
+    }
+  }
+}
+
+/* ///////////////////// */
+/* select */
+
+.mat-select-value {
+  font-size: $fs-16;
+}
+
+/* ///////////////////// */
+/* radio */
+
+.mat-radio-container {
+  zoom: .8;
+}
+
+.mat-radio-label-content {
+  font-size: $fs-12;
+}
+
+.fm-radio-inline {
+  mat-radio-button {
+    + mat-radio-button {
+      margin-left: $spacing-sm;
+    }
+  }
+}
+
+/* ///////////////////// */
+/* checkbox */
+
+.mat-checkbox-layout {
+  display: -webkit-flex !important;
+  display:  -webkit-box !important;
+  display:  -ms-flexbox !important;
+  display:     -moz-box !important;
+  display:         flex !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.mat-checkbox-inner-container {
+  zoom: .8 !important;
+  margin: 0 5px 0 0 !important;
+}
+
+.mat-checkbox-label {
+  font-size: $fs-12 !important;
+  line-height: normal !important;
+}
+
+/* ///////////////////// */
+
+/* textarea */
+
+textarea {
+  font-size: $fs-12 !important;
+  padding: 5px !important;
+  border: $border-divider !important;
+  resize: none !important;
+  box-sizing: border-box !important;
+}
+
+/* ///////////////////// */
+/* alerts */
+
+.message-error {
+  display: block;
+  color: $color-red;
+  font-size: $fs-12;
+  margin: $spacing-sm 0;
+}
+
+/* ///////////////////// */
+/* buttons */
+
+.buttons {
+  @include flexbox();
+  @include flex-align-items(center);
+
+  button {
+    width: auto;
+    height: auto;
+
+    + button {
+      margin-left: $spacing-sm;
+    }
+  }
+
+}

@@ -1,0 +1,57 @@
+.client-data {
+  width: 600px;
+  @import "../../components/table";
+
+  .latest-buy {
+    mat-header-cell,
+    mat-cell,
+    mat-footer-cell {
+      width: calc(30% / 3);
+
+      &:first-child {
+        width: 20%;
+      }
+
+      &:nth-child(2) {
+        width: 50%;
+      }
+
+      &:nth-child(3) {
+        @include flex-justify-content(center);
+      }
+
+      + mat-header-cell,
+      + mat-cell,
+      + mat-footer-cell {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  /* //////////////////////////////////////////// */
+
+  .statistics {
+    margin-top: $spacing-sm;
+
+    .table-header,
+    .table-content {
+      li {
+        width: calc(100%/3);
+        text-align: center;
+      }
+    }
+
+    .notes {
+      margin-top: $spacing-sm;
+
+      .comments {
+        font-size: $fs-12;
+      }
+
+      .scrollbar {
+        height: 44px;
+      }
+    }
+  }
+
+}

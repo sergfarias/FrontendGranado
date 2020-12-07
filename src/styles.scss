@@ -1,0 +1,81 @@
+
+
+/* You can add global styles to this file, and also import other style files */
+@import "~normalize.css/normalize.css";
+$fa-font-path: "../node_modules/font-awesome/fonts";
+//@import "~font-awesome/scss/font-awesome.scss";
+
+@import "~highlight.js/styles/androidstudio.css";
+
+@import "styles/var";
+@import "styles/mixins";
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+
+@import "styles/functions";
+@import "styles/misc";
+@import "styles/form";
+@import "styles/buttons";
+@import "styles/card";
+@import "styles/boxed";
+@import "styles/tabs";
+@import "styles/badges";
+@import "styles/helpers";
+@import "styles/tables";
+@import "styles/tour";
+@import "styles/elevation";
+
+@import "styles/components/preloader";
+@import "styles/components/sidenav";
+@import "styles/components/quickpanel";
+@import "styles/components/toolbar";
+@import "styles/components/dashboard";
+@import "styles/components/menu";
+@import "styles/components/form";
+@import "styles/components/dialog";
+@import "styles/components/tooltip";
+@import "styles/components/address-grid";
+
+@import "styles/layouts/layout-alpha";
+@import "styles/layouts/layout-beta";
+@import "styles/layouts/layout-gamma";
+
+@import "styles/pages/profile";
+@import "styles/pages/form-wizard";
+@import "styles/pages/chat";
+@import "styles/pages/components";
+
+@import "styles/brands/drogasmil";
+@import "styles/brands/farmalife";
+@import "styles/brands/tamoio";
+@import "styles/brands/rosario";
+
+@import "styles/pages/store-front";
+  @import "styles/pages/store-front/login";
+  @import "styles/pages/store-front/product-exchange";
+  @import "styles/pages/store-front/prescriber-register";
+  @import "styles/pages/store-front/order-store";
+  @import "styles/pages/store-front/auth-farmacia-popular";
+  @import "styles/pages/store-front/client-search";
+  @import "styles/pages/store-front/client-data";
+  @import "styles/pages/store-front/product-crm";
+  @import "styles/pages/store-front/product-info";
+  @import "styles/pages/store-front/product-search";
+  @import "styles/pages/store-front/product-search-simple";
+  @import "styles/pages/store-front/auth-pbm";
+  @import "styles/pages/store-front/pbm-cancel";
+  @import "styles/pages/store-front/pbm-history";
+  @import "styles/pages/store-front/transfer-product-store";
+  @import "styles/pages/store-front/client-register";
+  @import "styles/pages/store-front/delivery";
+  @import "styles/pages/store-front/budget-search";
+  @import "styles/pages/store-front/receipt-register";

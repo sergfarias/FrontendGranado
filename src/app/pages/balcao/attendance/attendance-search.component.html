@@ -1,0 +1,142 @@
+
+<section class="dialog client-register">
+  <header>
+    <h1>Atendimentos</h1>
+  </header>
+
+  <!-- ============================================================================================================= -->
+
+  <form [formGroup]="formCadastroAtendimento">
+
+    <div class="group">
+      <div class="group-inline">
+        <div class="group">
+          <div class="fm-inline">
+            <ul class="category group-inline">
+              Selecione o dia do agendamento:
+            </ul>
+          </div>
+          <br>
+          <div class="fm-inline size-30"></div>
+            <ul class="amount group-inline">
+              <mat-form-field class="fm-group size-60">
+                <input matInput [formControl]="DATE"  [matDatepicker]="formDatepickerRef" placeholder="Data" 
+                maxlength="10" (ngModelChange)="carregarAtendimentos($event)" >
+                <mat-datepicker-toggle matSuffix [for]="formDatepickerRef" ></mat-datepicker-toggle>
+                <mat-datepicker #formDatepickerRef></mat-datepicker>
+              </mat-form-field>
+            </ul>
+  
+            <mat-spinner mode="indeterminate"
+                diameter="16"
+                *ngIf="BuscandoCliente"
+            ></mat-spinner>
+          </div>
+        </div>
+   </div>
+
+    <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="address-grid group-inline">
+
+      <div class="address-list fm-group size-100">
+        <div class="header">
+          <h2 class="label">Agendamentos</h2>
+        </div>
+    
+        <div class="scrollbar">
+          <elastic-scrollbar class="scrollbar-container">
+    
+            <mat-table #table [dataSource]="dataSource" >
+              <mat-header-row *cdkHeaderRowDef="displayedColumns" ></mat-header-row>
+              <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+              <ng-container cdkColumnDef="id">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden> id </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.id}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="dataConsulta">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="10" >Dt. Atendimento </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="10" > {{row.dataConsulta}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="horario">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="10" >Horário</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="10" > {{row.horario}} </mat-cell>
+              </ng-container>
+
+              <ng-container cdkColumnDef="veterinarioId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden>veterinarioid </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.veterinarioId}} </mat-cell>
+              </ng-container>
+              
+              <ng-container cdkColumnDef="veterinarioNome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="20">Veterinário</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="20">
+                  <span class="item-name"
+                        #tooltip="matTooltip"
+                        matTooltip="{{row.veterinarioNome}}"
+                        matTooltipPosition="above">
+                    {{row.veterinarioNome}}
+                  </span>
+                </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="clienteId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden>clienteid </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.clienteId}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="clienteNome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="20" >Cliente </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="20" > {{row.clienteNome}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="animalId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden>animalid </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.animalId}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="animalNome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="20" >Animal </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="20" > {{row.animalNome}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="tipoAnimalId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden>Tipo</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.tipoAnimalId}} </mat-cell>
+              </ng-container>
+      
+              <ng-container cdkColumnDef="tipoAnimalNome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="20">Tipo</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="20"> {{row.tipoAnimalNome}} </mat-cell>
+              </ng-container>
+
+            </mat-table>
+    
+          </elastic-scrollbar>
+        </div>
+    
+      </div>
+    </div>
+
+    <br>
+    <!-- /////////////////////////////////////////////////////// -->
+
+   
+    <div class="buttons">
+      <button type="button" style="background-color: #089ef4;" class="reset-btn" mat-button (click)="limpar()"> Limpar</button>
+      <button type="button" style="background-color: #089ef4;" mat-button (click)="closeDialog()">Cancelar</button>
+    </div>
+
+    <!-- ============================================================================================================= -->
+
+    <ul class="dialog-actions">
+      <li>
+        <button type="button" (click)="closeDialog()"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </li>
+    </ul>
+
+  </form>
+</section>

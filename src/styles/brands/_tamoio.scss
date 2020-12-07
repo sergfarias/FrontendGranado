@@ -1,0 +1,7 @@
+.tamoio {
+  .checkout {
+    &:before {
+      background-image: image-default('tamoio.png');
+    }
+  }
+}

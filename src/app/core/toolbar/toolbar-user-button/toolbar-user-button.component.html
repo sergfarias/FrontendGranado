@@ -1,0 +1,47 @@
+<div class="user-button-container" #userButton (vrClickOutside)="onClickOutside()">
+  <button class="user-button" mat-button (click)="toggleDropdown()" [class.open]="isOpen">
+    <span fxLayout="row" fxLayoutAlign="start center">
+      <span class="avatar-container" fxLayout="row" fxLayoutAlign="start center">
+        <!--<img class="avatar" src="assets/img/demo/avatars/noavatar.png">
+        <i class="status primary"></i>-->
+      </span>
+      <span class="name" fxHide fxShow.gt-sm>{{ IsAuthenticated ? UserName : "USUÁRIO NÃO IDENTIFICADO" }}</span>
+      <!--<mat-icon class="icon" fxHide fxShow.gt-sm *ngIf="IsAuthenticated">keyboard_arrow_down</mat-icon>-->
+    </span>
+  </button>
+
+  <div class="dropdown mat-elevation-z1" [class.open]="isOpen" *ngIf="IsAuthenticated">
+    <div class="content">
+      <ul class="list">
+        <!-- <li class="item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+          <span class="title">Configurações</span>
+        </li> -->
+        <li class="item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="Logout()">
+          <mat-icon class="icon">exit_to_app</mat-icon>
+          <span class="title" (click)="Logout()">Sair</span>
+        </li>
+        <!-- <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">account_circle</mat-icon>
+          <span class="title">Perfil</span>
+        </div> -->
+       <!--  <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">settings</mat-icon>
+          <span class="title">Preferências</span>
+        </div> -->
+        <!-- <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">person</mat-icon>
+          <span class="title">Online</span>
+          <div class="second-level-dropdown"></div>
+        </div> -->
+        <!-- <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">help</mat-icon>
+          <span class="title">Ajuda</span>
+        </div> -->
+        <div class="divider"></div>
+      </ul>
+    </div>
+  </div>
+
+
+</div>

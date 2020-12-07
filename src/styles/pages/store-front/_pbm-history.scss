@@ -1,0 +1,44 @@
+.pbm-history {
+  width: 900px;
+  @import "../../components/table";
+
+  .filter {
+    @include flexbox();
+    @include flex-align-items(center);
+    margin-bottom: $spacing-sm;
+    border-bottom: $border-divider;
+
+    p {
+      margin-right: $spacing-sm;
+    }
+
+    .actions {
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  /* ///////////// */
+
+  .table {
+    .scrollbar {
+      height: 300px;
+    }
+
+    .table-list {
+      > li {
+        margin-top: 10px;
+      }
+    }
+
+    .table-header,
+    .table-content {
+      li {
+        width: calc(70%/4);
+
+        &:nth-child(4) {
+          width: 30%;
+        }
+      }
+    }
+  }
+}

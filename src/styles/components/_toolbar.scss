@@ -1,0 +1,135 @@
+.toolbar {
+  font-size: $fs-12;
+  height: $height__toolbar;
+  position: relative;
+  padding: 0 $spacing-sm;
+  @include flexbox();
+  @include flex-align-items(center);
+  @include flex-justify-content-end();
+
+  .system-info {
+    @include flexbox();
+    @include flex-align-items(center);
+
+    li {
+      + li {
+        margin-left: $spacing-sm;
+      }
+    }
+  }
+
+  /* //////////////////////////////////////////////// */
+
+  .user-actions {
+    @include flexbox();
+    @include flex-align-items(center);
+
+    li {
+      position: relative;
+      @include flexbox();
+      @include flex-align-items(center);
+
+      &:first-child {
+        margin-right: 15px;
+      }
+    }
+
+    button {
+      padding: 5px 10px;
+      border: none;
+      background: none;
+      cursor: pointer;
+
+      &:hover {
+        + .tooltip {
+          @include opacity(1);
+          @include transition (all 0.2s ease-in-out);
+          visibility: visible;
+        }
+
+        i {
+          color: $color-green;
+          @include transition (all 0.2s ease-in-out);
+        }
+      }
+
+      i {
+        font-size: $fs-16;
+        color: white;
+        @include transition (all 0.2s ease-in-out);
+      }
+    }
+
+    .dropdown {
+      min-width: 300px;
+    }
+
+    .tooltip {
+      &.top {
+        top: 40px;
+      }
+    }
+  }
+
+  .mat-button {
+    font-size: $fs-12;
+  }
+
+  /* ///////////////////////////////////////////////////////////////////////////////////////////// */
+
+  .menu-secondary {
+    position: relative;
+    display: flex;
+
+    .dropdown {
+      width: 100%;
+      min-width: 300px;
+      color: $color__text-darker;
+      background: white;
+      position: absolute;
+      top: 15px;
+      left: -42px;
+      z-index: -1;
+      visibility: hidden;
+      @include transform(translateY(-110%));
+      transition: transform .4s cubic-bezier(.25, .8, .25, 1), visibility .4s cubic-bezier(.25, .8, .25, 1);
+
+      .content {
+        ul {
+          li {
+            height: 48px;
+            padding: 0 16px;
+            position: relative;
+            cursor: pointer;
+
+            &:hover {
+              background: $layout-beta__background-color__sidenav-item__level1__hover;
+            }
+          }
+        }
+      }
+
+      &.open {
+        @include transform(translateY(0));
+        visibility: visible;
+      }
+
+      i {
+        width: 20px;
+        font-size: $fs-18;
+        margin-right: 15px;
+
+        img {
+          width: 100%;
+          max-width: 20px;
+          max-height: 20px;
+        }
+      }
+
+      .icon {
+        font-size: $fs-22;
+        margin-right: 10px;
+      }
+    }
+  }
+}

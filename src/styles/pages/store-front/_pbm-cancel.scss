@@ -1,0 +1,22 @@
+.pbm-cancel {
+  .select-pbm {
+    text-align: center;
+    margin: $spacing-md 0;
+
+    mat-radio-button {
+      + mat-radio-button {
+        margin-left: $spacing-md;
+      }
+
+      label {
+        @include flexbox();
+        @include flex-direction(column-reverse);
+        @include flex-align-items(center);
+
+        .mat-radio-container {
+          margin-top: $spacing-sm;
+        }
+      }
+    }
+  }
+}

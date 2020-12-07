@@ -1,0 +1,599 @@
+.store-front {
+  overflow: hidden;
+  @import "../components/table";
+
+  .container {
+    @include flexbox();
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-underline {bottom: 0;}
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {padding: 0;}
+
+  .main {
+    > div {
+      &:first-child {
+        height: calc(36vh - 20px);
+      }
+
+      &:last-child {
+        height: calc(64vh - 10px);
+      }
+    }
+  }
+
+  .box {
+    + .box {
+      margin-top: 10px;
+    }
+
+    &.group-inline {
+      .group {
+        width: 50%;
+      }
+    }
+  }
+
+  .box-inline {
+    @include flexbox();
+    @include flex-justify-content(space-between);
+
+    .box {
+      width: 40%;
+      margin-top: $box-margin;
+
+      + .box {
+        width: 60%;
+        margin-left: $box-margin;
+      }
+    }
+  }
+
+  .group-inline {
+    @include flexbox();
+    @include flex-justify-content(space-between);
+
+    .group {
+      + .group {
+        margin-left: $spacing-sm;
+      }
+    }
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  p {
+    line-height: normal;
+    position: relative;
+  }
+
+  /* /////////////////////////////////////////////// */
+
+  .summary {
+    height: 193px;
+    @include flexbox();
+
+    > div {
+      width: 75%;
+
+      + div {
+        width: 25%;
+        padding-left: $table-spacing;
+        margin-left: $table-spacing;
+        border-left: $border-divider;
+      }
+    }
+
+    .product {
+      ul {
+        + ul {
+          margin-top: 15px;
+        }
+      }
+
+      .input-name {
+        width: 100%;
+        font-size: $fs-30;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $color-blue;
+        border: none;
+        background: none;
+      }
+
+      .input-qtd {
+        @extend .input-name;
+        font-size: $fs-34;
+        color: black;
+      }
+
+      .input-discount {
+        @extend .input-name;
+        font-size: $fs-34;
+        color: white;
+      }
+
+      .description {
+        .label {
+          margin: 0;
+        }
+
+        li {
+          position: relative;
+
+          &:first-child {
+            width: 60%;
+
+            @include placeholder {
+              color: $color-gray;
+              @include opacity(1);
+            }
+
+            a {
+              cursor: pointer;
+            }
+          }
+
+          &:nth-child(2) {
+            width: 30%;
+          }
+
+          &:nth-child(3) {
+            width: 10%;
+            text-align: center;
+          }
+        }
+
+        p {
+          + p {
+            font-size: $fs-26;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $color-blue;
+          }
+        }
+
+        .tooltip {
+          top: 60px;
+        }
+      }
+
+      /* /// */
+
+      .amount {
+        .label {
+          margin: 0;
+        }
+
+        li {
+          width: calc(100%/5);
+          background: white;
+          border: $border-divider;
+          padding: 5px;
+          @include border-radius(4px);
+          @include flexbox();
+          @include flex-direction(column);
+          @include flex-justify-content-end();
+
+          + li {
+            margin-left: $spacing-sm;
+          }
+
+          &:nth-child(3),
+          &:nth-child(4) {
+            background: $color-blue;
+            border-color: $color-blue;
+
+            p {
+              color: white;
+            }
+          }
+        }
+
+        p {
+          + p {
+            font-size: $fs-34;
+            font-weight: 700;
+            text-transform: uppercase;
+
+            &.text-large {
+              font-size: $fs-22;
+            }
+          }
+        }
+      }
+
+      /* /// */
+
+      .category {
+        .label {
+          margin: 0;
+        }
+
+        li {
+          width: calc(100% / 3);
+          position: relative;
+
+          + li {
+            margin-left: $spacing-sm;
+          }
+        }
+
+        p {
+          + p {
+            font-size: $fs-22;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+        }
+
+        .tooltip {
+          top: 50px;
+        }
+      }
+    }
+
+    /* ////////////////////////////// */
+
+    .suggest {
+      .scrollbar {
+        height: 175px;
+      }
+
+      .group {
+        + .group {
+          padding-top: $table-spacing;
+          margin-top: $table-spacing;
+          border-top: $border-divider;
+        }
+      }
+
+      .table {
+        li {
+          text-align: center;
+
+          &:first-child {
+            text-align: left;
+          }
+        }
+
+        .table-header,
+        .table-content {
+          li {
+            &:first-child {
+              width: 80%;
+            }
+
+            &:last-child {
+              width: 20%;
+            }
+          }
+        }
+      }
+
+      /* /// */
+
+      .affiliate-stock {
+
+        .table-header,
+        .table-content {
+          li {
+            width: 20%;
+
+            &:first-child {
+              width: 80%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* /////////////////////////////////////////////// */
+
+  .benefits {
+    margin-top: $store-front-spacing;
+
+    .group {
+      width: 50%;
+
+      + .group {
+        padding-left: 10px;
+        margin-left: 10px;
+        border-left: $border-divider;
+      }
+    }
+  }
+
+  /* /////////////////////////////////////////////// */
+
+  .discount {
+    margin-bottom: $main-padding;
+
+    .scrollbar {
+      height: 80px;
+    }
+
+    .table-header,
+    .table-content {
+      li {
+        &:first-child {
+          width: 50%;
+        }
+
+        &:nth-child(2) {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  /* /////////////////////////////////////////////// */
+
+  .user {
+    header {
+      @include flexbox();
+      @include flex-align-items(center);
+      @include flex-justify-content-end();
+
+      .user-actions {
+        width: auto;
+        @include flexbox();
+        @include flex-align-items(center);
+
+        li {
+          position: relative;
+
+          + li {
+            margin-left: $spacing-sm;
+          }
+        }
+
+        button {
+          font-size: $fs-16;
+          color: white;
+          padding: 4px 10px;
+          margin: -4px -10px;
+          border: none;
+          background: none;
+          cursor: pointer;
+
+          &.bt-cart {
+            &.disabled {
+              cursor: default;
+              color: white;
+            }
+
+            &.enabled {
+              color: black;
+            }
+          }
+        }
+
+        .tooltip {
+          left: -10px;
+        }
+      }
+    }
+
+    .client {
+      font-size: $fs-12;
+      margin-top: 10px;
+      @include flexbox();
+      @include flex-align-items(center);
+      @include flex-wrap(wrap);
+
+      li {
+        padding: 2px 0;
+        @include flexbox();
+
+        &:nth-child(1),
+        &:nth-child(4),
+        &:nth-child(6) {
+          width: 30%;
+        }
+
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(5) {
+          width: 70%;
+        }
+
+        strong {
+          margin-right: 2px;
+        }
+
+        span {
+          + span {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .fm-inline {
+      + .fm-inline {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  /* /////////////////////////////////////////////// */
+
+  .details {
+    margin-top: $main-padding;
+
+    .group {
+      width: 60%;
+
+      + .group {
+        width: 40%;
+      }
+    }
+
+    .latest-buy {
+      .table-header,
+      .table-content {
+        li {
+          width: calc(35%/2 - 15px);
+
+          &:nth-child(1) {
+            width: 25%;
+          }
+
+          &:nth-child(2) {
+            width: 40%;
+          }
+
+          &:nth-child(3) {
+            text-align: center;
+          }
+        }
+      }
+
+      .scrollbar {
+        height: 82px;
+      }
+    }
+
+    .statistics {
+      .table-header,
+      .table-content {
+        li {
+          width: calc(100%/2);
+          text-align: center;
+        }
+      }
+
+      .notes {
+        margin-top: $spacing-sm;
+
+        .comments {
+          font-size: $fs-12;
+        }
+
+        .scrollbar {
+          height: 30px;
+        }
+      }
+    }
+
+  }
+
+  /* /////////////////////////////////////////////// */
+
+  .checkout {
+    width: calc(50% - #{$main-padding});
+    position: relative;
+    @include flexbox();
+    @include flex-direction(column);
+    @include flex-justify-content-end();
+
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: transparentize(white, .1);
+      background-blend-mode: lighten;
+      background-size: 90% auto;
+    }
+
+    .block {
+      position: relative;
+      z-index: 1;
+    }
+
+    .table {
+      background: none;
+
+      .table-header,
+      .table-content {
+        li {
+          width: calc(75%/9);
+
+          &:nth-child(2),
+          &:nth-child(4) {
+            text-align: center;
+          }
+
+          &:nth-child(3) {
+            width: 23%;
+          }
+
+          &:last-child {
+            width: 2%;
+          }
+        }
+      }
+
+      .table-list {
+        li {
+          padding: 2px 0;
+        }
+      }
+    }
+
+    .scrollbar {
+      height: 230px;
+    }
+
+    .confirmation {
+      li {
+        width: calc(100%/4);
+        background: white;
+        border: $border-divider;
+        padding: 5px;
+        @include border-radius(4px);
+
+        + li {
+          margin-left: $spacing-sm;
+        }
+
+        &:nth-child(3),
+        &:nth-child(4) {
+          background: $color-blue;
+          border-color: $color-blue;
+
+          p {
+            color: white;
+          }
+        }
+
+        &:nth-child(4) {
+          background: $color-green-hv;
+          border-color: $color-green-hv;
+        }
+
+        &:last-child {
+          font-size: $fs-16;
+        }
+      }
+
+      p {
+        position: relative;
+
+        + p {
+          font-size: $fs-40;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: $color-blue;
+        }
+      }
+
+      .type {
+        font-size: $fs-10;
+        color: white;
+        font-weight: 400;
+        text-transform: initial;
+        position: absolute;
+        bottom: -3px;
+        right: -3px;
+      }
+    }
+  }
+
+}

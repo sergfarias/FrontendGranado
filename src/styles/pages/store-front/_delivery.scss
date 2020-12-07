@@ -1,0 +1,31 @@
+.delivery {
+  width: 600px;
+  @import "../../components/table";
+
+  .scrollbar {
+    height: 45px;
+  }
+
+  .table {
+    margin-bottom: $spacing-md;
+
+    .table-header,
+    .table-content {
+      li {
+        width: 10%;
+
+        &:last-child {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  /* /// */
+
+  .notes {
+    textarea {
+      height: 75px;
+    }
+  }
+}

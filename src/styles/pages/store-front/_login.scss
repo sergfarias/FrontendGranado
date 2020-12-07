@@ -1,0 +1,24 @@
+.login {
+  .login-content {
+    width: 400px;
+    font-size: $fs-20;
+    text-align: center;
+    padding: $spacing-md 0;
+
+    .fm-group {
+      max-width: 70%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .note {
+    max-width: 70%;
+    margin: 0 auto;
+    font-size: $fs-12;
+  }
+
+  .buttons {
+    @include flex-justify-content(center);
+  }
+}

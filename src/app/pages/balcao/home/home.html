@@ -1,0 +1,173 @@
+<div class="store-front">
+  <div class="container" >
+
+    <aside class="menu">
+      <div class="scrollbar">
+        <elastic-scrollbar class="scrollbar-container">
+          <nav>
+            <ul>
+              <li>
+                <button (click)="dialogAttendanceRegister()"><i class="fa fa-archive" aria-hidden="true"></i></button>
+                <div class="tooltip">Atendimento</div>
+              </li>
+              <li>
+                <button (click)="dialogClientRegister()"><i class="fa fa-id-card" aria-hidden="true"></i></button>
+                <div class="tooltip">Cadastro de Cliente</div>
+              </li>
+              <li>
+                <button (click)="dialogProviderRegister()"><i class="fa fa-handshake-o" aria-hidden="true"></i></button>
+                <div class="tooltip">Cadastro de Veterinário</div>
+              </li>
+               </ul>
+          </nav>
+        </elastic-scrollbar>
+      </div>
+    </aside>
+
+    <!-- =========================================================================================================== -->
+
+    <div class="main">
+      <div class="box" >
+
+        <div class="summary">
+          <div class="product">
+             <ul class="description group-inline">
+              <li>
+                <div class="label" >
+                </div>
+              </li>
+            </ul>
+ 
+            <ul class="category group-inline">
+                  Selecione o dia de atendimento:
+            </ul>
+
+            <ul class="amount group-inline">
+              <mat-form-field class="fm-group size-30">
+                <input matInput [formControl]="DATE"  [matDatepicker]="formDatepickerRef" placeholder="Data" 
+                maxlength="10" (ngModelChange)="carregarHorarios($event,0)" >
+                <mat-datepicker-toggle matSuffix [for]="formDatepickerRef" ></mat-datepicker-toggle>
+                <mat-datepicker #formDatepickerRef></mat-datepicker>
+              </mat-form-field>
+            </ul>
+      
+            <ul class="category group-inline">
+                Selecione o veterinário:
+            </ul>
+
+            <ul class="amount group-inline">
+              <mat-form-field class="fm-group size-80">
+                <input type="text"
+                       placeholder="Veterinário"
+                       aria-label="Number"
+                       matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto" 
+                       [disabled]="IsLoading"
+                       [(ngModel)]="Username"
+                       (keyup)="keyPress($event)"
+                       maxlength="150"
+                       >
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of lista" [value]="option.nome"
+                  (onSelectionChange)='carregarHorarios(null,option.id)'>
+                      {{option.nome}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+          
+            </ul>
+
+          </div>
+        <!-- /////////////////////////////////////////// -->
+
+        <div class="benefits group-inline">
+          <ul>
+             <li>
+                <img src="../../../../assets/img/granado.jpg" style="height: 200px;width: 300px;" alt="Granado" />
+             </li>
+          </ul>
+        </div>
+
+      </div>
+
+
+      <!-- =============================================================================================-->
+
+      <div class="size-60">
+
+         <section class="box group">
+          <div class="block">
+            <header>
+              <p class="label-bar">Horários disponiveis</p>
+            </header>
+
+           
+                                 <!-- /////////////////////////////////////////////////////// -->
+
+                                 <div class="address-grid group-inline">
+
+                                  <div class="address-list fm-group size-100">
+                                  
+                                    <div class="scrollbar">
+                                      <elastic-scrollbar class="scrollbar-container">
+                                
+                                        <mat-table #table [dataSource]="dataSource" >
+                                          <mat-header-row *cdkHeaderRowDef="displayedColumns" ></mat-header-row>
+                                          <mat-row *cdkRowDef="let row; columns: displayedColumns;"
+                                          (click)="SelecionarHorario(row)"></mat-row>
+                                
+                                          <ng-container cdkColumnDef="id">
+                                            <mat-header-cell *cdkHeaderCellDef fxFlex="10" hidden> id </mat-header-cell>
+                                            <mat-cell *cdkCellDef="let row" fxFlex="10" hidden> {{row.id}} </mat-cell>
+                                          </ng-container>
+                                
+                                          <ng-container cdkColumnDef="veterinarioid">
+                                            <mat-header-cell *cdkHeaderCellDef fxFlex="15" hidden>veterinarioid </mat-header-cell>
+                                            <mat-cell *cdkCellDef="let row" fxFlex="15" hidden> {{row.veterinarioid}} </mat-cell>
+                                          </ng-container>
+                                
+                                          <ng-container cdkColumnDef="veterinarionome">
+                                            <mat-header-cell *cdkHeaderCellDef fxFlex="75">Veterinário</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let row" fxFlex="75">
+                                              <span class="item-name"
+                                                    #tooltip="matTooltip"
+                                                    matTooltip="{{row.veterinarionome}}"
+                                                    matTooltipPosition="above">
+                                                {{row.veterinarionome}}
+                                              </span>
+                                            </mat-cell>
+                                          </ng-container>
+                                          
+                                          <ng-container cdkColumnDef="horario">
+                                            <mat-header-cell *cdkHeaderCellDef fxFlex="15" >Horário</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let row" fxFlex="15" > {{row.horario}} </mat-cell>
+                                          </ng-container>
+                                          
+                                          <ng-container cdkColumnDef="geriatra">
+                                            <mat-header-cell *cdkHeaderCellDef fxFlex="10">Geriatra</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let row" fxFlex="10"> 
+                                             
+                                              
+                                              <i class="fa fa-check" aria-hidden="true" fxShow="{{row.geriatra}}" ></i> 
+                                             
+                                            </mat-cell>
+                                          </ng-container>
+                                
+                                        </mat-table>
+                                
+                                      </elastic-scrollbar>
+                                    </div>
+                                
+                                  </div>
+                                </div>
+      
+          </div>
+         </section>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

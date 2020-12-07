@@ -1,0 +1,49 @@
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+mat-form-field{
+    width:100%;
+}
+
+.hide-autocomplete {
+    display: none;
+}
+
+.mat-input-element:disabled{
+    color:rgba(0, 0, 0, 0.87);
+}
+
+@media print{
+
+    .no-print {
+        display: none!important;
+    }
+}
+
+#cdk-overlay-1.cdk-overlay-pane,
+#cdk-overlay-2.cdk-overlay-pane,
+#cdk-overlay-3.cdk-overlay-pane,
+#cdk-overlay-4.cdk-overlay-pane,
+#cdk-overlay-5.cdk-overlay-pane,
+#cdk-overlay-6.cdk-overlay-pane,
+#cdk-overlay-7.cdk-overlay-pane,
+#cdk-overlay-8.cdk-overlay-pane,
+#cdk-overlay-9.cdk-overlay-pane,
+#cdk-overlay-10.cdk-overlay-pane,
+#cdk-overlay-11.cdk-overlay-pane,
+#cdk-overlay-12.cdk-overlay-pane,
+#cdk-overlay-13.cdk-overlay-pane,
+#cdk-overlay-14.cdk-overlay-pane,
+#cdk-overlay-15.cdk-overlay-pane,
+#cdk-overlay-16.cdk-overlay-pane,
+#cdk-overlay-17.cdk-overlay-pane,
+#cdk-overlay-18.cdk-overlay-pane,
+#cdk-overlay-19.cdk-overlay-pane,
+#cdk-overlay-20.cdk-overlay-pane {
+    min-width: 112.5px; 
+    pointer-events: auto; 
+    font-size: 16px;
+  }
+

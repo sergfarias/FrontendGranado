@@ -1,0 +1,146 @@
+
+<section class="dialog client-register">
+  <header>
+    <h1>Cadastro de Agendamento</h1>
+  </header>
+
+  <!-- ============================================================================================================= -->
+
+  <form [formGroup]="formCadastroAgendamento">
+
+    <div class="group">
+      <h2 class="label">Dados Básicos</h2>
+
+      <div class="group-inline">
+        <div class="group">
+          <div class="fm-inline">
+
+            <!-- class="invisible" -->
+            <input matInput placeholder="Codigo" class="invisible" formControlName="id">
+            <div class="fm-search">
+            <mat-form-field class="fm-group size-100">
+              <input matInput placeholder="CPF" type="text" formControlName="cpf"
+                    (keyUp.enter)="PesquisarClienteGrid()"  
+                    [(ngModel)]="CPF"  
+                    mask="{{ CpfMask }}" 
+                    (ngModelChange)="CPF=$event; onCnpjCpfChanged()">
+            </mat-form-field>
+          
+           <mat-spinner
+              mode="indeterminate"
+              diameter="16"
+              *ngIf="BuscandoCliente"
+          ></mat-spinner>
+
+            <button type="button" mat-icon-button (click)="PesquisarClienteGrid()">
+              <mat-icon class="icon">search</mat-icon>
+            </button>
+
+          </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="fm-inline">
+        <mat-form-field class="fm-group">
+          <input matInput placeholder="Nome" type="text" maxlength="250" formControlName="nome" [(ngModel)]="NOME"
+          (ngModelChange)="NOME = $event.toUpperCase()">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="address-grid group-inline">
+
+      <div class="address-list fm-group size-100">
+        <div class="header">
+          <h2 class="label">Animais</h2>
+       </div>
+    
+        <div class="scrollbar">
+          <elastic-scrollbar class="scrollbar-container">
+    
+            <mat-table #table [dataSource]="dataSource" >
+              <mat-header-row *cdkHeaderRowDef="displayedColumns" ></mat-header-row>
+              <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+              <ng-container cdkColumnDef="clienteId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden>clienteid </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.clienteId}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="id">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden> id </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.id}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="RADIO">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="10"></mat-header-cell>
+                <mat-cell *cdkCellDef="let row"fxFlex="10"> <mat-radio-button value="{{row.animalId}},{{row.clienteId}},{{row.nome}},{{row.idade}},{{row.tipoId}}" [checked]="false" (change)="radioChangeHandler(row, $event)"></mat-radio-button> </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="idade">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="10">Idade</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="10"> {{row.idade}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="nome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="30">Nome</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="30">
+                  <span class="item-name"
+                        #tooltip="matTooltip"
+                        matTooltip="{{row.nome}}"
+                        matTooltipPosition="above">
+                    {{row.nome}}
+                  </span>
+                </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="tipoAnimalId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden >Tipo</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.tipoAnimalId}} </mat-cell>
+              </ng-container>
+      
+              <ng-container cdkColumnDef="tipoAnimalNome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="30">Tipo</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="30"> {{row.tipoAnimalNome}} </mat-cell>
+              </ng-container>
+
+            </mat-table>
+    
+          </elastic-scrollbar>
+        </div>
+    
+      </div>
+    </div>
+
+    <br>
+
+    <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="buttons">
+      <button type="button" style="background-color: #089ef4;" class="reset-btn" mat-button (click)="limpar()"> Limpar</button>
+      <button type="button" style="background-color: #089ef4;" mat-button (click)="closeDialog()">Cancelar</button>
+
+      <mat-spinner
+      mode="indeterminate"
+      diameter="16"
+      *ngIf="GravandoCliente"
+      ></mat-spinner>
+
+      <button type="button" style="background-color: #089ef4;" mat-button (click)="onSubmit()" >Salvar</button>
+    </div>
+
+    <!-- ============================================================================================================= -->
+
+    <ul class="dialog-actions">
+      <li>
+        <button type="button" (click)="closeDialog()"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </li>
+    </ul>
+
+  </form>
+</section>

@@ -1,0 +1,53 @@
+.transfer-product-store {
+  width: 900px;
+  height: 500px;
+  @import "../../components/table";
+
+  mat-header-cell,
+  mat-cell,
+  mat-footer-cell {
+    width: calc(50% / 5);
+
+    &:nth-child(2) {
+      width: 20%;
+    }
+
+    &:nth-child(3) {
+      width: 30%;
+    }
+
+    + mat-header-cell,
+    + mat-cell,
+    + mat-footer-cell {
+      margin-left: 10px;
+    }
+  }
+
+  /* ///////////////////////////////////////// */
+
+  .stock {
+    font-size: $fs-12;
+    border: $border-divider;
+    margin-left: 10px;
+    padding: 10px;
+
+    .scrollbar {
+      height: 310px;
+    }
+
+    .table {
+      .table-header,
+      .table-content {
+        li {
+          width: calc(80% - 15px);
+
+          &:last-child {
+            width: 20%;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+}

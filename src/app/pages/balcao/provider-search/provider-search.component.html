@@ -1,0 +1,82 @@
+<section class="dialog client-search">
+  <header>
+    <h1>Pesquisa de Veterinário</h1>
+  </header>
+
+  <!-- ============================================================================================================= -->
+
+  <form [formGroup]="formSearch">
+    <div class="fm-inline">
+      <mat-form-field class="fm-group">
+        <mat-select
+          placeholder="Consulta por"
+          formControlName="selected"
+          [(ngModel)]="selected"
+          (ngModelChange)="selectedChange($event)"
+        >
+          <mat-option *ngFor="let fornecedor of array" [value]="fornecedor.key">{{
+            fornecedor.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="fm-group">
+        <input
+          matInput
+          #pesquisaInput
+          placeholder="Termo de Pesquisa"
+          type="text"
+          [(ngModel)]="Termo"
+          formControlName="Termo"
+          mask="{{ fieldMask() }}"
+          (ngModelChange)="CNPJ_CPF = $event; onCnpjCpfChanged()"
+          autofocus
+          (keyup.enter)="Pesquisar()"
+          (keydown)="modifyMask($event)"
+        />
+      </mat-form-field>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="Pesquisar()"
+        [disabled]="!formSearch.valid"
+      >
+        <mat-icon class="icon">search</mat-icon>
+      </button>
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////// -->
+    <mat-spinner
+      mode="indeterminate"
+      diameter="32"
+      *ngIf="IsPesquisando"
+    ></mat-spinner>
+
+    <app-scroll-grid
+      *ngIf="!IsPesquisando"
+      class="client-result"
+      #gridPesquisa
+      [source]="dataSource"
+      [automap]="false"
+      [columns]="displayedColumns"
+      (rowSelected)="selecionarFornecedor($event)"
+    ></app-scroll-grid>
+
+    <!-- /////////////////////////////////////////////////////////// -->
+
+    <div class="buttons">
+      <button mat-button>Cancelar</button>
+      <!-- <button mat-button (click)="openSnackbar()">Aplicar</button> -->
+    </div>
+
+    <!-- ============================================================================================================= -->
+
+    <ul class="dialog-actions">
+      <li>
+        <button (click)="closeDialog()">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+  </form>
+</section>

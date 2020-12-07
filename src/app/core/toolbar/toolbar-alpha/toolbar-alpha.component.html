@@ -1,0 +1,70 @@
+<div class="toolbar" fxLayout="row">
+
+  <ul class="user-actions" (vrClickOutside)="onClickOutside()">
+    <li>
+      <button (click)="toggleDropdown()" [class.open]="isOpen"><i class="fa fa-bars" aria-hidden="true"></i></button>
+      <!--<div class="tooltip top left">Menu</div>-->
+
+      <div class="menu-secondary">
+        <div class="dropdown mat-elevation-z1" [class.open]="isOpen">
+          <div class="content">
+            <ul class="list">
+              <li class="item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="dialogClientRegister()">
+                <i class="fa fa-id-card" aria-hidden="true"></i>
+                <span class="title">Cadastro de Cliente</span>
+              </li>
+
+               <li class="item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="dialogAttendanceSearchRegister()">
+                <i class="fa fa-archive" aria-hidden="true"></i> 
+                <span class="title">Lista Atendimentos</span>
+              </li>
+ 
+              <!-- <li class="item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="dialogUserRegister()">
+                <i class="fa fa-user-o" aria-hidden="true"></i> 
+                <span class="title">Cadastro Usuários</span>
+              </li>
+              <li class="item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="dialogBudgetSearch()">
+                <mat-icon class="icon">find_in_page</mat-icon>
+                <span class="title">Pesquisar Movimentações</span>
+              </li> -->
+
+             <!--  <li class="item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="dialogOutputType()">
+                <i class="fa fa-exchange" aria-hidden="true"></i>
+                <span class="title">Cadastro Tipo Saída</span>
+              </li>
+              --> 
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </li>
+
+    <!-- /// -->
+
+    <!-- <li>
+      <button (click)="dialogIdSeller()"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+      <div class="tooltip top left">Login <br /> (Alt + F1)</div>
+    </li>
+
+    <li>
+      <button (click)="budgetGravar()"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+      <div class="tooltip top left">Salvar Orçamento <br /> (Alt + F2)</div>
+    </li>
+
+    <li>
+      <button (click)="budgetClear()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+      <div class="tooltip top left">Limpar Orçamento <br /> (Alt + F3)</div>
+    </li> -->
+  </ul>
+
+  <ul class="system-info">
+    <li><strong>IP:</strong> 127.0.0.1</li>
+  </ul>
+
+  <elastic-toolbar-user-button></elastic-toolbar-user-button>
+
+
+</div>
+

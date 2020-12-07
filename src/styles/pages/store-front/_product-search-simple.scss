@@ -1,0 +1,26 @@
+.product-search-simple {
+  width: 900px;
+  height: 480px;
+  @import "../../components/table";
+
+  mat-header-cell,
+  mat-cell,
+  mat-footer-cell {
+    width: calc(60% / 4);
+
+    &:nth-child(2) {
+      width: 40%;
+    }
+
+    + mat-header-cell,
+    + mat-cell,
+    + mat-footer-cell {
+      margin-left: 10px;
+    }
+  }
+
+  .scrollbar {
+    height: 390px !important;
+  }
+
+}

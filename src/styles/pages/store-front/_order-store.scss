@@ -1,0 +1,42 @@
+.order-store {
+  width: 700px;
+
+  .scrollbar {
+    height: 250px;
+  }
+
+  .statistics {
+    ul {
+      font-size: $fs-12;
+      padding: 10px;
+      border: $border-divider;
+    }
+
+    li {
+      + li {
+        margin-top: 10px;
+      }
+    }
+
+    strong {
+      width: 100px;
+      display: inline-block;
+    }
+  }
+
+  mat-header-cell,
+  mat-cell,
+  mat-footer-cell {
+    width: calc(80% / 6);
+
+    &:nth-child(2) {
+      width: 20%;
+    }
+
+    + mat-header-cell,
+    + mat-cell,
+    + mat-footer-cell {
+      margin-left: 10px;
+    }
+  }
+}

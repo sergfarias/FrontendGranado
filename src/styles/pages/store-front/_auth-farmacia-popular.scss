@@ -1,0 +1,19 @@
+.auth-farmacia-popular {
+  width: 800px;
+
+  mat-header-cell,
+  mat-cell,
+  mat-footer-cell {
+    width: calc(80% / 8);
+
+    &:nth-child(2) {
+      width: 20%;
+    }
+
+    + mat-header-cell,
+    + mat-cell,
+    + mat-footer-cell {
+      margin-left: 10px;
+    }
+  }
+}

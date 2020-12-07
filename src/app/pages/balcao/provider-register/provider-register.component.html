@@ -1,0 +1,96 @@
+
+<section class="dialog client-register">
+  <header>
+    <h1>Cadastro de Veterinário</h1>
+  </header>
+
+  <!-- ============================================================================================================= -->
+
+  <form [formGroup]="formCadastroVeterinario">
+
+    <div class="group">
+      <h2 class="label">Dados Básicos</h2>
+
+      <div class="group-inline">
+        <div class="group">
+          <div class="fm-inline">
+
+            <!-- class="invisible" -->
+            <input matInput placeholder="Codigo" class="invisible" formControlName="id">
+            <div class="fm-search">
+            <mat-form-field class="fm-group size-120">
+              <input matInput placeholder="CPF" type="text" formControlName="cpf"
+              (keyUp.enter)="PesquisarVeterinario()"  
+              [(ngModel)]="cpf"  mask="{{ cpfMask }}" (ngModelChange)="CPF=$event; onCpfChanged()">
+            </mat-form-field>
+          
+           <mat-spinner
+              mode="indeterminate"
+              diameter="16"
+              *ngIf="BuscandoVeterinario"
+          ></mat-spinner>
+
+            <button type="button" mat-icon-button (click)="PesquisarVeterinario()">
+              <mat-icon class="icon">search</mat-icon>
+            </button>
+
+            <button type="button" (click)="dialogProviderSearch()">
+              <i class="fa fa-user"  aria-hidden="true"></i></button>
+            <!--<div class="tooltip top left">Trocar Cliente</div>
+            <div class="tooltip top right">Imagem do Produto</div>-->
+          </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="fm-inline">
+        <mat-form-field class="fm-group">
+          <input matInput placeholder="Nome" type="text" maxlength="250" formControlName="nome" [(ngModel)]="nome"
+          (ngModelChange)="nome = $event.toUpperCase()">
+        </mat-form-field>
+     </div>
+
+      <div class="fm-inline">
+        <mat-form-field class="fm-group size-30">
+          <input matInput [matDatepicker]="dataContratacao" placeholder="Data Contratação" formControlName="dataContratacao"
+          maxlength="10" (keypress)="keyPress($event)">
+          <mat-datepicker-toggle matSuffix [for]="dataContratacao"></mat-datepicker-toggle>
+          <mat-datepicker #dataContratacao></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="fm-inline">
+        <mat-checkbox [(ngModel)]="geriatra" [checked]="checked" 
+        formControlName="geriatra" >Geriatra</mat-checkbox>
+      </div>
+
+    </div>
+
+    <br />
+
+    <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="buttons">
+      <button type="button" style="background-color: #089ef4;" class="reset-btn" mat-button (click)="limpar()"> Limpar</button>
+      <button type="button" style="background-color: #089ef4;" mat-button (click)="closeDialog()">Cancelar</button>
+
+      <mat-spinner
+      mode="indeterminate"
+      diameter="16"
+      *ngIf="GravandoVeterinarior"
+      ></mat-spinner>
+
+      <button type="button" style="background-color: #089ef4;" mat-button (click)="onSubmit()" [disabled]="!formCadastroVeterinario.valid">Salvar</button>
+    </div>
+
+    <!-- ============================================================================================================= -->
+
+    <ul class="dialog-actions">
+      <li>
+        <button type="button" (click)="closeDialog()"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </li>
+    </ul>
+
+  </form>
+</section>

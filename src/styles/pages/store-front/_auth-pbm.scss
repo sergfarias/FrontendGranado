@@ -1,0 +1,30 @@
+.auth-pbm {
+  .group-inline {
+    .group {
+      width: 70%;
+
+      + .group {
+        width: 30%;
+      }
+    }
+  }
+
+  mat-header-cell,
+  mat-cell,
+  mat-footer-cell {
+    width: calc(40% / 5);
+
+    &:nth-child(2) {
+      width: 40%;
+    }
+    &:nth-child(3) {
+      width: 20%;
+    }
+
+    + mat-header-cell,
+    + mat-cell,
+    + mat-footer-cell {
+      margin-left: 10px;
+    }
+  }
+}

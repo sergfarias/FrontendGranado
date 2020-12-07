@@ -1,0 +1,61 @@
+.address-grid {
+  .address-list {
+
+    .scrollbar {
+      height: 140px;
+    }
+
+    /* ////////////////// */
+
+    mat-header-cell,
+    mat-cell,
+    mat-footer-cell {
+      &:nth-child(1) {
+        width: 5%;
+      }
+
+      &:nth-child(4),
+      &:nth-child(8) {
+        width: calc(15%/2);
+      }
+
+      &:nth-child(2) {
+        width: 10%;
+      }
+
+      &:nth-child(3) {
+        width: 30%;
+      }
+
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7) {
+        width: calc(40%/3);
+      }
+
+      + mat-header-cell,
+      + mat-cell,
+      + mat-footer-cell {
+        margin-left: 10px;
+      }
+    }
+
+    mat-header-row {
+      min-height: 40px;
+    }
+
+    mat-row {
+      @include transition (all 0.2s ease-in-out);
+
+      &:hover {
+        background: $color-green;
+        cursor: pointer;
+        @include transition (all 0.2s ease-in-out);
+      }
+    }
+
+    button {
+      padding: 0;
+    }
+  }
+}

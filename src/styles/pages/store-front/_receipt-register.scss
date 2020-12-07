@@ -1,0 +1,133 @@
+.receipt-register {
+  width: 1100px;
+  @import "../../components/table";
+
+  > .group-inline {
+    > .group {
+      width: 20%;
+
+      + .group {
+        width: 80%;
+        padding-left: $main-padding;
+        margin-left: $main-padding;
+        border-left: $border-divider;
+      }
+    }
+  }
+
+  /* ///////////////////// */
+
+  .summary {
+    + div {
+      margin-top: $spacing-sm;
+    }
+
+    .header {
+      margin-bottom: $main-padding;
+      background: transparentize($color-gray-lt, .8);
+      padding: 2px 5px;
+    }
+
+    .scrollbar {
+      height: 200px;
+    }
+
+    .item-list {
+      font-size: $fs-12;
+      margin-right: $main-padding;
+
+      > li {
+
+        + li {
+          padding-top: calc(#{$main-padding} / 2);
+          margin-top: calc(#{$main-padding} / 2);
+          border-top: $border-divider;
+        }
+
+        ul {
+          @include flexbox();
+          @include flex-align-items(center);
+
+          li {
+            width: 90%;
+
+            &:last-child {
+              width: 10%;
+              font-size: $fs-18;
+              color: green;
+            }
+
+            &.attention {
+              color: orange;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ///////////////////// */
+
+  .medicament-list {
+
+    .scrollbar {
+      height: 100px;
+    }
+
+    .table {
+      .table-header,
+      .table-content {
+        li {
+          width: calc(40%/3);
+
+          + li {
+            margin-top: 10px;
+          }
+
+          &:first-child {
+            width: 50%;
+          }
+
+          &:nth-child(4) {
+            text-align: center;
+          }
+
+          &:last-child {
+            width: 10%;
+          }
+        }
+      }
+    }
+  }
+
+  /* ///////////////////// */
+
+  .medicament-details {
+    .scrollbar {
+      height: 150px;
+    }
+
+    mat-header-cell,
+    mat-cell,
+    mat-footer-cell {
+      width: calc(60% / 3);
+
+      &:nth-child(2) {
+        width: 40%;
+      }
+
+      + mat-header-cell,
+      + mat-cell,
+      + mat-footer-cell {
+        margin-left: 10px;
+
+        input {
+          width: 70%;
+          border: $border-divider;
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+
+}

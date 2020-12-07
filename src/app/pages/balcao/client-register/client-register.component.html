@@ -1,0 +1,196 @@
+
+<section class="dialog client-register">
+  <header>
+    <h1>Cadastro de Cliente</h1>
+  </header>
+
+  <!-- ============================================================================================================= -->
+
+  <form [formGroup]="formCadastroCliente">
+
+    <div class="group">
+      <h2 class="label">Dados Básicos</h2>
+
+      <div class="group-inline">
+        <div class="group">
+          <div class="fm-inline">
+
+            <!-- class="invisible" -->
+            <input matInput placeholder="Codigo" class="invisible" formControlName="id">
+            <div class="fm-search">
+            <mat-form-field class="fm-group size-120">
+              <input matInput placeholder="CPF" type="text" formControlName="cpf"
+                    (keyUp.enter)="PesquisarClienteGrid()"  
+                    [(ngModel)]="CPF"  
+                    mask="{{ CpfMask }}" 
+                    (ngModelChange)="CPF=$event; onCnpjCpfChanged()">
+            </mat-form-field>
+          
+           <mat-spinner
+              mode="indeterminate"
+              diameter="16"
+              *ngIf="BuscandoCliente"
+          ></mat-spinner>
+
+            <button type="button" mat-icon-button (click)="PesquisarClienteGrid()">
+              <mat-icon class="icon">search</mat-icon>
+            </button>
+
+            <button type="button" (click)="dialogClientSearch()"><i class="fa fa-user" aria-hidden="true"></i></button>
+           
+          </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="fm-inline">
+        <mat-form-field class="fm-group">
+          <input matInput placeholder="Nome" type="text" maxlength="250" formControlName="nome" [(ngModel)]="NOME"
+          (ngModelChange)="NOME = $event.toUpperCase()">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="address-grid group-inline">
+
+      <div class="address-list fm-group size-100">
+        <div class="header">
+          <h2 class="label">Animais</h2>
+          <ul class="actions">
+             <li><a (click)="dialogAnimalRegister()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></li>
+            <li><a (click)="searchSelectedAnimalRegister(selectedAnimal)"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+           </ul>
+        </div>
+    
+        <div class="scrollbar">
+          <elastic-scrollbar class="scrollbar-container">
+    
+            <mat-table #table [dataSource]="dataSource" >
+              <mat-header-row *cdkHeaderRowDef="displayedColumns" ></mat-header-row>
+              <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+              <ng-container cdkColumnDef="clienteId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden>clienteid </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.clienteId}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="id">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden> id </mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.id}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="RADIO">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="10"></mat-header-cell>
+                <mat-cell *cdkCellDef="let row"fxFlex="10"> <mat-radio-button value="{{row.animalId}},{{row.clienteId}},{{row.nome}},{{row.idade}},{{row.tipoId}}" [checked]="row.animalId == checkedAnimalid" (change)="radioChangeHandler(row, $event)"></mat-radio-button> </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="idade">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="10">Idade</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="10"> {{row.idade}} </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="nome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="30">Nome</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="30">
+                  <span class="item-name"
+                        #tooltip="matTooltip"
+                        matTooltip="{{row.nome}}"
+                        matTooltipPosition="above">
+                    {{row.nome}}
+                  </span>
+                </mat-cell>
+              </ng-container>
+    
+              <ng-container cdkColumnDef="tipoAnimalId">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="5" hidden >Tipo</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="5" hidden> {{row.tipoAnimalId}} </mat-cell>
+              </ng-container>
+      
+              <ng-container cdkColumnDef="tipoAnimalNome">
+                <mat-header-cell *cdkHeaderCellDef fxFlex="30">Tipo</mat-header-cell>
+                <mat-cell *cdkCellDef="let row" fxFlex="30"> {{row.tipoAnimalNome}} </mat-cell>
+              </ng-container>
+
+            </mat-table>
+    
+          </elastic-scrollbar>
+        </div>
+    
+      </div>
+    </div>
+
+    <br>
+    <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="group-inline">
+
+      <div class="contact-list group size-60">
+        <div class="header">
+          <h2 class="label">Contato</h2>
+            <a (click)="addNewContact()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        </div>
+
+        <br/>
+          <div class="scrollbar">
+            <elastic-scrollbar class="scrollbar-container">
+              <ul>
+                <li formArrayName="contatos" *ngFor="let c of formCadastroCliente.get('contatos').controls; let i = index;">
+                  <div class="fm-inline" [formGroupName]="i">
+                    
+                    <input matInput class="invisible" type="text" formControlName="id_contato">
+                    <app-input-field-select ngClass="fm-group size-40" label="Tipo" 
+                       [lista]="listTipoContato" formControlName="id_tipo_contato"
+                        itemValue="id_tipo_contato" itemDisplay="ds_tipo_contato">
+                    </app-input-field-select>
+
+                    <mat-form-field class="fm-group size-80">
+                      <input matInput placeholder="Contato" type="text" maxlength="250" formControlName="ds_contato" 
+                      mask="{{getMascara(c, i)}}" oninput="this.value = this.value.toLowerCase()">
+                    </mat-form-field>
+                  </div>
+                </li>
+              </ul>
+            </elastic-scrollbar>
+          </div>
+      </div>
+
+       <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="notes group size-40">
+      <div class="header">
+        <p class="label">Observações</p>
+      </div>
+      <textarea matInput formControlName="observacao" maxlength="250" oninput="this.value = this.value.toUpperCase()"></textarea>
+    </div>
+
+    </div>
+
+    <!-- /////////////////////////////////////////////////////// -->
+
+    <div class="buttons">
+      <button type="button" style="background-color: #089ef4;" class="reset-btn" mat-button (click)="limpar()"> Limpar</button>
+      <button type="button" style="background-color: #089ef4;" mat-button (click)="closeDialog()">Cancelar</button>
+
+      <mat-spinner
+      mode="indeterminate"
+      diameter="16"
+      *ngIf="GravandoCliente"
+      ></mat-spinner>
+
+      <button type="button" style="background-color: #089ef4;" mat-button (click)="onSubmit()" [disabled]="!formCadastroCliente.valid">Salvar</button>
+    </div>
+
+    <!-- ============================================================================================================= -->
+
+    <ul class="dialog-actions">
+      <li>
+        <button type="button" (click)="closeDialog()"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </li>
+    </ul>
+
+  </form>
+</section>

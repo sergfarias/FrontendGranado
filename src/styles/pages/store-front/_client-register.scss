@@ -1,0 +1,17 @@
+.client-register {
+  width: 900px;
+  @import "../../components/table";
+
+  /* /// */
+
+  .notes {
+    .header {
+      @include flexbox();
+      @include flex-justify-content-end();
+    }
+
+    textarea {
+      height: 70px;
+    }
+  }
+}

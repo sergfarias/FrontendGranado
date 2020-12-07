@@ -1,0 +1,106 @@
+.tooltip {
+  min-width: 170px;
+  font-size: $fs-12;
+  font-weight: 500;
+  color: white;
+  padding: 20px;
+  background: transparentize($background, .1);
+  position: absolute;
+  top: 0;
+  left: calc(#{$menu-size} + 5px);
+  z-index: 2;
+  @include flexbox();
+  @include flex-align-items(center);
+  @include transition (all 0.2s ease-in-out);
+  @include opacity(0);
+  visibility: hidden;
+
+  &:before {
+    content: "";
+    width: 0;
+    height: 0;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent transparentize($background, .1) transparent transparent;
+  }
+
+  .close {
+    display: none;
+  }
+
+  &.visible {
+    @include opacity(1);
+    visibility: visible;
+
+    .close {
+      line-height: 0;
+      padding: 10px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+      display: block;
+    }
+  }
+
+  &.top {
+    top: 35px;
+    left: -20px;
+
+    &:before {
+      top: -15px;
+      left: 20px;
+      margin-top: 0;
+      @include rotate(90deg);
+    }
+
+    &.right {
+      left: auto;
+      right: 0;
+
+      &:before {
+        left: auto;
+        right: 10px;
+      }
+    }
+
+    &.left {
+      left: 0;
+
+      &:before {
+        left: 10px;
+      }
+    }
+  }
+}
+
+button,
+a,
+.item-name,
+.input-name {
+  position: relative;
+
+  &:hover {
+    @include transition (all 0.2s ease-in-out);
+
+    + .tooltip {
+      @include opacity(1);
+      @include transition (all 0.2s ease-in-out);
+      visibility: visible;
+    }
+  }
+}
+
+/* ////////////////////////// */
+
+.mat-tooltip {
+  font-size: $fs-12;
+  font-weight: 500;
+  color: white;
+  background: transparentize($background, .1);
+  @include border-radius(0!important);
+}

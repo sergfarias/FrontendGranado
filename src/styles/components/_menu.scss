@@ -1,0 +1,78 @@
+.menu {
+  width: $menu-size;
+  background: $background;
+  @include flexbox();
+  @include flex-direction(column);
+  @include flex-justify-content(center);
+
+  + .main {
+    width: 100%;
+  }
+
+  .scrollbar {
+    height: calc(100vh - #{$header-size});
+    position: relative;
+    z-index: 2;
+
+    .scrollbar-container {
+      overflow: initial !important;
+    }
+
+    .scrollbar-track,
+    .scrollbar-thumb {
+      width: 3px;
+    }
+
+    .scrollbar-track-x {
+      @include opacity(0);
+    }
+  }
+
+  li {
+    position: relative;
+
+    + li {
+      margin-top: 1px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  button {
+    width: 100%;
+    height: $menu-size;
+    font-size: 24px;
+    color: black;
+    background: $menu-bg;
+    border: none;
+    cursor: pointer;
+    @include transition (all 0.2s ease-in-out);
+
+    &:hover {
+      background: $menu-bg-hover;
+    }
+
+    &.disabled {
+      background: $color-gray;
+    }
+  }
+
+  i {
+    img {
+      max-width: 26px;
+      max-height: 26px;
+    }
+  }
+
+  .material-icons {
+    font-size: $fs-28;
+  }
+
+  .tooltip {
+    height: $menu-size;
+    padding: 0 20px;
+  }
+
+}

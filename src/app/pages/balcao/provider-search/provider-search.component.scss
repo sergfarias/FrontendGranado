@@ -1,0 +1,10 @@
+.client-search {}
+
+mat-row:focus{
+    outline: none;
+}
+
+mat-row:hover {
+    cursor: pointer;
+    background-color: #ebffa8;
+}

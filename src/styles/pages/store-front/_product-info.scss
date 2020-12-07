@@ -1,0 +1,14 @@
+.product-info {
+  .group {
+    li {
+      font-size: $fs-14;
+      padding: 10px 0;
+      border-top: $border-divider;
+    }
+  }
+
+  .scrollbar {
+    height: 150px;
+    margin-top: $spacing-sm;
+  }
+}
